@@ -10,24 +10,6 @@ console.log("Server started at " + port);
 
 var SOCKET_LIST = {};
 
-const options = {
-  timeCost: 8, memoryCost: 20, hashLength: 128, parallelism: 4, type: argon.argon2id
-};
-argon.hash('some-user-password', options).then(hash => {
-  console.log('Successfully created Argon2 hash:', hash);
-  argon.verify(hash, 'some-user-password').then(match => {
-    if (match) {
-      console.log("They match")
-    } else {
-      console.log("They don't")
-    }
-  }).catch(err => {
-    console.log(err);
-  });
-});
-
-
-
 io.sockets.on('connection', function(socket){
   socket.id = Math.random();
   SOCKET_LIST[socket.id] = socket;
