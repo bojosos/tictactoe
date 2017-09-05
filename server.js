@@ -1,7 +1,7 @@
 var port = process.env.PORT || 8192;
 var express = require('express');
 var app = express();
-var serv = require('https').Server(app);
+var serv = require('http').Server(app);
 var io = require('socket.io')(serv, {});
 var argon = require("argon2");
 
